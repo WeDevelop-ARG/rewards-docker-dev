@@ -12,26 +12,26 @@ services:
       - POSTGRES_PASSWORD=backend
 
   merity-backend:
-      container_name: merity-backend
-      build:
-        context: ../rewards-backend/
-        dockerfile: Dockerfile
-      ports:
-        - "3001:3001"
-      depends_on:
-        - merity-backend-db
-      working_dir:
-        "/usr/src/app"
-      volumes:
-        - '../rewards-backend:/usr/src/app'
-        - "/usr/src/app/node_modules"
-      environment:
-        - SITE_URL=http://localhost:3000
-        - DB_HOST=merity-backend-db
-        - DB_NAME=backend
-        - DB_USER=backend
-        - DB_PASSWORD=backend
-      command: ['npm', 'run', 'dev:smart:with-migrations']
+    container_name: merity-backend
+    build:
+      context: ../rewards-backend/
+      dockerfile: Dockerfile
+    ports:
+      - "3001:3001"
+    depends_on:
+      - merity-backend-db
+    working_dir:
+      "/usr/src/app"
+    volumes:
+      - '../rewards-backend:/usr/src/app'
+      - "/usr/src/app/node_modules"
+    environment:
+      - SITE_URL=http://localhost:3000
+      - DB_HOST=merity-backend-db
+      - DB_NAME=backend
+      - DB_USER=backend
+      - DB_PASSWORD=backend
+    command: ['npm', 'run', 'dev:smart:with-migrations']
 
   merity-frontend:
     container_name: merity-frontend
