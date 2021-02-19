@@ -25,12 +25,7 @@ services:
     volumes:
       - '../rewards-backend:/usr/src/app'
       - "/usr/src/app/node_modules"
-    environment:
-      - DB_HOST=merity-backend-db
-      - DB_NAME=backend
-      - DB_USER=backend
-      - DB_PASSWORD=backend
-      - ALLOWED_CORS_ORIGINS_REGEX=(localhost)
+    env_file: .env.backend
     command: ['npm', 'run', 'dev:smart:with-migrations']
 
   merity-frontend:
