@@ -30,6 +30,7 @@ services:
       - DB_NAME=backend
       - DB_USER=backend
       - DB_PASSWORD=backend
+      - ALLOWED_CORS_ORIGINS_REGEX=(localhost)
     command: ['npm', 'run', 'dev:smart:with-migrations']
 
   merity-frontend:
